@@ -5,7 +5,8 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 
 public class RemoveLineBreak {
-	public static void main(String[] args) {
+	
+	static void run() {
 		ArrayList<String> arr = new ArrayList<String>();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Insert text:");
@@ -22,8 +23,16 @@ public class RemoveLineBreak {
 			f = f.concat(arr.get(i) + " ");
 		}
 		
-		StringSelection stringSelection = new StringSelection(f);
+		String r = f.trim().replaceAll(" +", " ");
+		
+		StringSelection stringSelection = new StringSelection(r);
 		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 		clipboard.setContents(stringSelection, null);
+	}
+	
+	public static void main(String[] args) {
+		while(true) {
+			run();
+		}
 	}
 }
